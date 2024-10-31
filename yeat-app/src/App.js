@@ -1,30 +1,28 @@
+import React from 'react';
 import Navbar from './components/Navbar.js';
+import Banner from './components/Banner.js';
 import SearchBar from './components/SearchBar.js';
-import logo from './logo.svg';
+import MapComponent from './components/MapComponent.js';
 import './App.css';
 
 function App() {
-  return (
-      <div className="App">
-          <Navbar />
-          <header className="App-header">
-          <div className = "SearchBar">
-                  <SearchBar />
-              </div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Invata react frate sa reactionezi!
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Navbar />
+            <Banner />
+            <header className="App-header">
+                <div className="search-bar">
+                    <SearchBar />
+                </div>
+            </header>
+            <main className="App-body">
+                <div className="map">
+                    <MapComponent />
+                </div>
+            </main>
+
+        </div>
+    );
 }
 
 export default App;

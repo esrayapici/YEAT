@@ -1,0 +1,18 @@
+#map-container {
+    width: 92%; /* Full width */
+    height: 600px; /* Fixed height for the container */
+    margin: auto; /* Center the container */
+}
+
+#map {
+    border-radius: 15px; /* Optional: for rounded corners */
+    border: 1px solid grey;
+}
+
+@media (max-width: 600px) {
+
+#map-container {
+        width: 98%; /* Full width on smaller screens */
+        height: 600px;
+    }
+}

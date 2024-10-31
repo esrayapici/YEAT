@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .custom-object-position {
+        @apply object-cover; /* Apply Tailwind's object-cover for default behavior */
+        object-position: 30% 50%; /* Adjust to position the image between left and center */
+    }
+}
