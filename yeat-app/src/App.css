@@ -17,7 +17,7 @@ html, body {
 }
 
 .App-header {
-    background-color: #F3F4F6;
+    background-color: #404646;
     padding: 20px; /* Add some padding */
     display: flex;
     flex-direction: column;
@@ -32,8 +32,9 @@ html, body {
     display: flex; /* Use flexbox for layout */
     justify-content: center; /* Center content */
     align-items: center; /* Center content */
-    background-color: #F3F4F6; /* Set background color */
+    background-color: #404646; /* Set background color */
 }
+
 
 .map {
     flex: 1;

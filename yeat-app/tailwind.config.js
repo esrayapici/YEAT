@@ -13,6 +13,7 @@ module.exports = {
                 accentBrown: '#6D4C41',
                 lightGray: '#FAFAFA',
                 accentRed: '#FF5252',
+                movuliu: '#550c55',
             },
         },
     },

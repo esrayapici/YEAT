@@ -3,6 +3,7 @@ import Navbar from './components/Navbar.js';
 import Banner from './components/Banner.js';
 import SearchBar from './components/SearchBar.js';
 import MapComponent from './components/MapComponent.js';
+import BackToTop from "./components/BackToTop";
 import './App.css';
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
                 <div className="map">
                     <MapComponent />
                 </div>
-            </main>
-
+                </main>
+            <BackToTop />
         </div>
     );
 }

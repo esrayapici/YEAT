@@ -6,7 +6,7 @@ import Modal from './Modal.js'; // Ensure this is the correct path to your Modal
 const navigation = [
     //{ name: 'Dashboard', href: '#', current: true },
     //{ name: 'Team', href: '#', current: false },
-    //{ name: 'Projects', href: '#', current: false },
+    //{ name: 'Projects', href: '#', current: false },`
     //{ name: 'Calendar', href: '#', current: false },
 ];
 
@@ -29,8 +29,8 @@ export default function Navbar() {
                         <div className="flex flex-shrink-0 items-center">
                             <img
                                 alt="Your Company"
-                                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                                className="h-8 w-auto"
+                                src="yeat-logo-2.svg"
+                                className="h-12 w-auto"
                             />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
@@ -64,7 +64,7 @@ export default function Navbar() {
                         {/* Profile Dropdown */}
                         <Menu as="div" className="relative ml-3">
                             <div>
-                                <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-movuliu">
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">Open user menu</span>
                                     <img
