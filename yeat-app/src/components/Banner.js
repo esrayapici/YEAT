@@ -11,7 +11,6 @@ const links = [
 const stats = [
     { name: 'Of Menu Items', value: 'Hundreds' },
     { name: 'Locations', value: '1700+' },
-    { name: 'Hours per week', value: '40' },
     { name: 'Of Food Categories', value: 'Vast Variety' },
 ];
 
