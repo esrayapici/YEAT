@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon } from '@heroicons/react/24/outline';
 import { auth } from './firebase'; // Ensure correct path
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import Modal from './Modal'; // Adjust path if needed
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,8 +21,9 @@ export default function Navbar() {
     const handleSignOut = async () => {
         try {
             await signOut(auth);
-            setAlertMessage('Successfully signed out!'); // Set success message
-            setTimeout(() => setAlertMessage(''), 2000); // Clear the alert after 2 seconds
+            window.location.reload();
+            //setAlertMessage('Successfully signed out!'); // Set success message
+            //setTimeout(() => setAlertMessage(''), 2000); // Clear the alert after 2 seconds
         } catch (error) {
             console.error('Error signing out:', error);
         }
@@ -41,11 +42,13 @@ export default function Navbar() {
                     {/* Logo */}
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                            <img
-                                alt="Your Company"
-                                src="/yeat-logo-2.svg" // Adjust path as needed
-                                className="h-12 w-auto"
-                            />
+                            <Link to="/">
+                                <img
+                                    alt="Your Company"
+                                    src="/yeat-logo-2.svg" // Adjust path as needed
+                                    className="h-12 w-auto"
+                                />
+                            </Link>
                         </div>
                     </div>
 
@@ -79,38 +82,16 @@ export default function Navbar() {
                                             {/* Profile Menu Item */}
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <button
+                                                    <Link
+                                                        to="/profile"
                                                         className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
                                                             } block w-full px-4 py-2 text-sm text-center`}
                                                     >
                                                         Profile
-                                                    </button>
+                                                    </Link>
                                                 )}
                                             </Menu.Item>
-
-                                            {/* Favourites Menu */}
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                                                            } block w-full px-4 py-2 text-sm text-center`}
-                                                    >
-                                                        Favourites
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-
-                                            {/* History Menu */}
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${active ? 'bg-gray-100 text-gray-900' : 'text-gray-700'
-                                                            } block w-full px-4 py-2 text-sm text-center`}
-                                                    >
-                                                        History
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
+                                            
 
                                             {/* Sign Out */}
                                             <Menu.Item>
