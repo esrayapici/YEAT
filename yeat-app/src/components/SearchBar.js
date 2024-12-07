@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { db, auth } from "./firebase"; // Firebase imports
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { fetchLocations } from './apiService.js'
 import History from "./History"; // Import the LastSearches component
 
 export default function SearchBar() {
     const [inputValue, setInputValue] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("Restaurant");
+    const [locations, setLocations] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("restaurant");
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -48,6 +50,45 @@ export default function SearchBar() {
             } catch (error) {
                 console.error("Error saving search:", error);
             }
+        }
+
+        try {
+            const data = await fetchLocations(category);
+
+            console.log("Raw API Response:", data);
+
+            // Try alternative parsing methods
+            let locations = [];
+
+            // Method 1: Check if data itself is an array
+            if (Array.isArray(data)) {
+                locations = data;
+            }
+            // Method 2: Try parsing the entire response as an array
+            else if (typeof data === 'string') {
+                try {
+                    locations = JSON.parse(data);
+                } catch (parseError) {
+                    console.error("Error parsing response as JSON:", parseError);
+                }
+            }
+            // Method 3: Check for other potential array properties
+            else if (data.data && Array.isArray(data.data)) {
+                locations = data.data;
+            }
+
+            console.log(`Number of locations received: ${locations.length}`);
+
+            // Log first location for debugging
+            if (locations.length > 0) {
+                console.log("First location:", locations[0]);
+            }
+
+            // Set the locations state
+            setLocations(locations);
+        } catch (error) {
+            console.error("Error handling search:", error);
+            setLocations([]);
         }
     };
 
@@ -102,11 +143,11 @@ export default function SearchBar() {
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
                     >
-                        <option>Restaurant</option>
-                        <option>Fast-Food</option>
-                        <option>Cafe</option>
-                        <option>Bar</option>
-                        <option>Pub</option>
+                        <option>restaurant</option>
+                        <option>fast_food</option>
+                        <option>cafe</option>
+                        <option>bar</option>
+                        <option>pub</option>
                     </select>
                 </div>
             </div>
